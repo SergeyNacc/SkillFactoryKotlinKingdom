@@ -6,6 +6,9 @@ fun main() {
 
     println("Name: ${kingdom.ruler.name}. Power: ${kingdom.ruler.power}. Intellect: ${kingdom.ruler.intellect}.")
 
+    kingdom.heirs.forEach{
+        println("Name: ${it.name}. Power: ${it.power}. Intellect: ${it.intellect}")
+    }
 
     println(kingdom.archers)
     println(kingdom.warriors)
@@ -35,24 +38,35 @@ class Kingdom {
                 warriors.add(Warrior("Axe"))
             }
         }
+
+        for (i in 1..3) {
+            val whellOfFortune = WheelOfFortune()
+            heirs.add(Heir("Heirs $i", whellOfFortune))
+        }
     }
 
 
 }
 
 open class Ruler(val name: String) {
-    val power = 100f
-    val intellect = 100f
+    var power = 100f
+    var intellect = 100f
 }
 
-class Heir(name: String): Ruler(name) {
-
+class Heir(name: String, whellOfFortune: WheelOfFortune): Ruler(name) {
+    init {
+        power *= whellOfFortune.coefficient()
+        intellect *= whellOfFortune.coefficient()
+    }
 }
 
 data class Archer(var bow: String = "Longbow", val Dagger: String) {
-    constructor(dagger: String): this("Long", dagger)
+    constructor(dagger: String): this("Longbow", dagger)
 }
 
 data class Warrior (val weapon: String) {
+}
 
+class WheelOfFortune {
+    fun coefficient(): Float = (0..100).random() / 100f
 }
