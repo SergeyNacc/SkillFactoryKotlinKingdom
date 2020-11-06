@@ -49,8 +49,8 @@ class Heir(name: String): Ruler(name) {
 
 }
 
-data class Archer(val bow: String) {
-
+data class Archer(var bow: String = "Longbow", val Dagger: String) {
+    constructor(dagger: String): this("Long", dagger)
 }
 
 data class Warrior (val weapon: String) {
