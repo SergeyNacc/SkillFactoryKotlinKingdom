@@ -1,4 +1,4 @@
-package Peasants
+package peasants
 
 data class Peasant(val occupation: Occupation)
 

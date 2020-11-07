@@ -1,4 +1,4 @@
-package Peasants
+package peasants
 
 enum class Occupation {
     WORKER,

@@ -1,7 +1,7 @@
 package kingdom
 
-import Peasants.Occupation
-import Peasants.Peasant
+import peasants.Occupation
+import peasants.Peasant
 
 fun main() {
 
@@ -74,6 +74,12 @@ class Kingdom {
 open class Ruler(val name: String) {
     var power = 100f
     var intellect = 100f
+
+    companion object{
+        fun geroldGreetings() {
+            println("Его Величиство в здании!")
+        }
+    }
 }
 
 class Heir(name: String, whellOfFortune: WheelOfFortune): Ruler(name) {
