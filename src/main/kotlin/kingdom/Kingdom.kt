@@ -1,5 +1,8 @@
 package kingdom
 
+import Peasants.Occupation
+import Peasants.Peasant
+
 fun main() {
 
     val kingdom = Kingdom()
@@ -22,6 +25,8 @@ class Kingdom {
     val archers = mutableListOf<Archer>()
     val warriors = mutableListOf<Warrior>()
 
+    val peasants = mutableListOf<Peasant>()
+
     init {
         for (i in 0..19) {
             if (i % 2 == 0) {
@@ -43,6 +48,24 @@ class Kingdom {
             val whellOfFortune = WheelOfFortune()
             heirs.add(Heir("Heirs $i", whellOfFortune))
         }
+
+        /*
+        * Creat Peasants
+        */
+
+        for (i in 0..99) {
+            when {
+                i % 3 == 0 -> {
+                    peasants.add(Peasant(Occupation.FARMER))
+                }
+                i % 2 == 0 -> {
+                    peasants.add(Peasant(Occupation.BUILDER))
+                }
+                else -> {
+                    peasants.add(Peasant(Occupation.WORKER))
+                }
+            }
+        }
     }
 
 
@@ -60,7 +83,7 @@ class Heir(name: String, whellOfFortune: WheelOfFortune): Ruler(name) {
     }
 }
 
-data class Archer(var bow: String = "Longbow", val Dagger: String) {
+data class Archer(var bow: String = "Longbow", val dagger: String) {
     constructor(dagger: String): this("Longbow", dagger)
 }
 
