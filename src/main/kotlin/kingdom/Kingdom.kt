@@ -5,6 +5,8 @@ import army.Specialization
 import monarchy.Heir
 import monarchy.Noble
 import monarchy.Ruler
+import peasants.Occupation
+import peasants.Peasant
 
 /**
  * Напишите extension функцию, которая будет, в зависимости от класса бойца, давать
@@ -68,7 +70,7 @@ class Kingdom {
 
     private fun createArmy(): List<Fighter> = mutableListOf<Fighter>().apply {
         repeat(50) {
-            if (i % 2 == 0) {
+            if (it % 2 == 0) {
                 add(Fighter(Specialization.ARCHER))
             } else {
                 add(Fighter(Specialization.SWORDSMAN))
@@ -76,12 +78,20 @@ class Kingdom {
         }
     }
 
-    /**
-     * Создайте крестьян, пусть крестьяне с номером кратным трем будут фермеры
-     * кратные двум - строителями
-     * все остальные рабочими
+    /*
+     * created Peasants
      */
-    private fun createPeasants() {}
+
+    private fun createPeasants() = mutableListOf<Peasant>().apply {
+        repeat(100) {
+            when {
+                it % 3 == 0 -> add(Peasant(Occupation.FARMER))
+                it % 2 == 0 -> add(Peasant(Occupation.BUILDER))
+                else -> add(Peasant(Occupation.WORKER))
+            }
+        }
+    }
+
 }
 
 /**
