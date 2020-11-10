@@ -1,5 +1,7 @@
 package kingdom
 
+import monarchy.Heir
+import monarchy.Noble
 import monarchy.Ruler
 
 /**
@@ -35,19 +37,28 @@ class Kingdom {
 
     val taxCollector: TaxCollector = TaxCollector()
 
-    //creat King
+    /*
+     * created King
+     */
 
     private fun createRuler() = Ruler("Sergio").also {
         println("Да здравствует король ${it.name}!")
     }
 
 
-    /**
-     * Создайте несколько наследников престола, каждому дайте свое имя,выведите в консоль приветствие
-     * каждому наследнику:
-     * "Hail to ${it.name}!"
+    /*
+     *  created Heirs
      */
-    private fun createHeirs(): List<Noble> {}
+
+    private fun createHeirs(): List<Noble> = mutableListOf<Noble>().apply {
+        add(Heir("Artur"))
+        add(Heir("Maksim"))
+        add(Heir("Aleksandr"))
+
+        forEach {
+            println("Приветствуем ${it.name}!")
+        }
+    }
 
     /**
      * Создайте армию, пусть каждый воторой будет лучник
