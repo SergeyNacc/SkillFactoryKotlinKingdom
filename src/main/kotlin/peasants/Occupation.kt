@@ -1,7 +1,7 @@
 package peasants
 
-enum class Occupation {
-    WORKER,
-    BUILDER,
-    FARMER
+enum class Occupation ( val taxRate: Int) {
+    WORKER(1),
+    BUILDER(2),
+    FARMER(3)
 }

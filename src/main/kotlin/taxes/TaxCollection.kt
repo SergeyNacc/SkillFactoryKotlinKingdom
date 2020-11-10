@@ -1,8 +1,7 @@
 package taxes
 
+import peasants.Peasant
 
-abstract class TaxCollector : CollectTaxes
-
-interface CollectTaxes {
-    fun collect()
+interface TaxCollection {
+    fun collection(peasant: Peasant): Int
 }

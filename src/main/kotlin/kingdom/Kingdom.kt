@@ -7,6 +7,7 @@ import monarchy.Noble
 import monarchy.Ruler
 import peasants.Occupation
 import peasants.Peasant
+import taxes.TaxCollector
 
 /**
  * Напишите extension функцию, которая будет, в зависимости от класса бойца, давать
@@ -20,13 +21,13 @@ fun main() {
     val kingdom = Kingdom()
 
     collectTaxes(kingdom) {
-        println("My Lord, we have collected: $it gold coins!")
+        println("Мой Король, в казне: $it золота!")
     }
 
     upgradeArmy(kingdom.army)
 
     whoWillInheritThrone(kingdom.heirs) {
-        println("Next King is ${it.name}!")
+        println("Следующий король это - ${it.name}!")
     }
 }
 
@@ -98,6 +99,11 @@ class Kingdom {
  * Соберите налоги, и реализуйте метод в соответсвии с вызовом в методе main
  */
 private fun collectTaxes(kingdom: Kingdom, function: (tax: Int) -> Unit) {
+    kingdom.peasants.forEach {
+        val tax = kingdom.taxCollector.collection(it)
+        kingdom.treasury += tax
+    }
+    function(kingdom.treasury)
 }
 
 /**
