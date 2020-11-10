@@ -1,5 +1,7 @@
 package kingdom
 
+import army.Fighter
+import army.Specialization
 import monarchy.Heir
 import monarchy.Noble
 import monarchy.Ruler
@@ -60,11 +62,19 @@ class Kingdom {
         }
     }
 
-    /**
-     * Создайте армию, пусть каждый воторой будет лучник
+    /*
+     * created Army
      */
-    private fun createArmy(): List<Fighter> {}
 
+    private fun createArmy(): List<Fighter> = mutableListOf<Fighter>().apply {
+        repeat(50) {
+            if (i % 2 == 0) {
+                add(Fighter(Specialization.ARCHER))
+            } else {
+                add(Fighter(Specialization.SWORDSMAN))
+            }
+        }
+    }
 
     /**
      * Создайте крестьян, пусть крестьяне с номером кратным трем будут фермеры
