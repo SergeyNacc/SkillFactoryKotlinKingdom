@@ -1,5 +1,7 @@
 package kingdom
 
+import monarchy.Ruler
+
 /**
  * Напишите extension функцию, которая будет, в зависимости от класса бойца, давать
  * ему улучшенное оружие(Просто более кртое название) и прокачивать статы
@@ -33,11 +35,11 @@ class Kingdom {
 
     val taxCollector: TaxCollector = TaxCollector()
 
-    /**
-     * Создайте правителя и выведите следующее приветствие:
-     * "Hail to the King ${it.name}!"
-     */
-    private fun createRuler() {}
+    //creat King
+
+    private fun createRuler() = Ruler("Sergio").also {
+        println("Да здравствует король ${it.name}!")
+    }
 
 
     /**
