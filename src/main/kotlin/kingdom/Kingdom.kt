@@ -28,6 +28,7 @@ fun Fighter.upgrade() {
 }
 
 fun main() {
+
     val kingdom = Kingdom()
 
     collectTaxes(kingdom) {
@@ -42,6 +43,7 @@ fun main() {
 }
 
 class Kingdom {
+
     var treasury = 0
 
     val ruler: Noble = createRuler()
@@ -133,7 +135,7 @@ private fun upgradeArmy(army: List<Fighter>) {
  */
 
 fun whoWillInheritThrone(heirs: List<Noble>, function: (Noble) -> Unit) {
-    val heir = heirs.maxBy {
+    val heir = heirs.maxByOrNull {
         it.power + it.intellect
     }
     function (heir!!)
