@@ -95,9 +95,10 @@ class Kingdom {
 
 }
 
-/**
- * Соберите налоги, и реализуйте метод в соответсвии с вызовом в методе main
- */
+/*
+* tax collection
+*/
+
 private fun collectTaxes(kingdom: Kingdom, function: (tax: Int) -> Unit) {
     kingdom.peasants.forEach {
         val tax = kingdom.taxCollector.collection(it)
@@ -112,9 +113,13 @@ private fun collectTaxes(kingdom: Kingdom, function: (tax: Int) -> Unit) {
 private fun upgradeArmy(army: List<Fighter>) {}
 
 
-/**
- * В этом методе реализуйте выбор претенденат на трон, нужно сравнить по их параметрам сила
- * + интеллект, должен быть выбран саммый спосбный
+/*
+ * next Heir
  */
+
 fun whoWillInheritThrone(heirs: List<Noble>, function: (Noble) -> Unit) {
+    val heir = heirs.maxBy {
+        it.power + it.intellect
+    }
+    function (heir!!)
 }
