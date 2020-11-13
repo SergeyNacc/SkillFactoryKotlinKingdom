@@ -9,12 +9,22 @@ import peasants.Occupation
 import peasants.Peasant
 import taxes.TaxCollector
 
-/**
- * Напишите extension функцию, которая будет, в зависимости от класса бойца, давать
- * ему улучшенное оружие(Просто более кртое название) и прокачивать статы
+/*
+ *  upgrade Army
  */
 
 fun Fighter.upgrade() {
+    when (specialization) {
+        Specialization.SWORDSMAN -> {
+            weapon = "Longsword"
+            strength += 1
+        }
+
+        Specialization.ARCHER -> {
+            weapon = "Longbow"
+            dextirity += 1
+        }
+    }
 }
 
 fun main() {
@@ -107,10 +117,15 @@ private fun collectTaxes(kingdom: Kingdom, function: (tax: Int) -> Unit) {
     function(kingdom.treasury)
 }
 
-/**
- * Сделайте апгрейд ваший армии использую expression
+/*
+ * extension fun
  */
-private fun upgradeArmy(army: List<Fighter>) {}
+
+private fun upgradeArmy(army: List<Fighter>) {
+    army.forEach {
+        it.upgrade()
+    }
+}
 
 
 /*
